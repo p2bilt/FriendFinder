@@ -1,0 +1,19 @@
+{
+  "name": "friendfinder",
+  "version": "1.0.0",
+  "description": "a full stack implementation of a simple 'dating' app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p2bilt/FriendFinder.git"
+  },
+  "author": "Peter Johnstone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/p2bilt/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/p2bilt/FriendFinder#readme"
+}
