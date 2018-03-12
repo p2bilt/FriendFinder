@@ -12,12 +12,13 @@
     <title>Survey</title>
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Orbitron|Quantico|Share+Tech+Mono|VT323" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="/ff.css" />
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+<!--     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -35,26 +36,24 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-            <!--/.nav-collapse -->
         </div>
-    </nav>
+    </nav> -->
     <div class="container">
         <div class="starter-template">
-            <h1>Survey</h1>
             <h1>Replicant Friend Finder</h1>
             <h2>Voight-Kampff Quiz</h2>
-            <p class="lead">Capillary dilation of the so-called blush response...fluctuation of the pupil...involuntary dilation of the iris.
+            <p class="lead">Capillary dilation of the so-called blush response...<br/>fluctuation of the pupil... involuntary dilation of the iris.                     <button id="all" type="submit" class="btn btn-info pull-right"><span class="glyphicon glyphicon-user"></span> View All Replicant Models</button>
             </p>
         </div>
         <div class="wrap">
             <form role="form" action="" id="Voight-Kampff">
                 <div class="form-group">
                     <label for="">Name</label>
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" class="form-control" id="name" required>
                 </div>
                 <div class="form-group">
                     <label for="">Photo URL</label>
-                    <input type="text" class="form-control" id="photo">
+                    <input type="text" class="form-control" id="photo" required>
                 </div>
                 <label class="statement">Its your birthday. Someone gives you a calfskin wallet. How do you react?</label>
                 <ul class='likert'>
@@ -240,7 +239,9 @@
                         <label>Extreme Delight</label>
                     </li>
                 </ul>
-                <label class="statement">Do you like this owl?</label>
+                            
+                <label class="statement">Do you like our owl?</label>
+                <div class="img col-centered" style="background-image:url('/images/171-0321110023-Blade-Runner-owl.jpg');"></div>
                 <ul class='likert'>
                     <li>
                         <input type="radio" name="owl" value="1">
@@ -289,7 +290,7 @@
                 <div class="buttons">
                     <!--       <button class="clear">Clear</button>
  -->
-                    <button type="submit" class="btn btn-primary submit">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-lg submit">Submit</button>
                 </div>
             </form>
         </div>
@@ -298,112 +299,126 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-
     <!-- Link to the jQuery Library -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
     <!-- Modal -->
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <!--         <button type="button" class="close" data-dismiss="modal">&times;</button>
- -->
-                        <h4 class="modal-title">Closest Friend Match</h4>
-                    </div>
-                    <div class="divider"></div>
-            <h5 id="userMatch"></h5>
-            <img id="userMatchImage" class="materialboxed" width="650" src="">
-                    <div class="modal-footer">
-                      <a href="/survey" class="modal-action modal-close waves-effect waves-green btn-flat">Fill Again!</a>
-                    </div>
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center">Your Replicant Friend Match has been Detected!</h3>
                 </div>
+                <div class="divider"></div>
+                <br/>
+                <div class="row text-center">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <h4 class="text-center">You</h4>
+                        <div class="thumbnail">
+                            <div id="userPhoto" class="img col-centered" style=""></div>
+                            <h5 id="userName" class="text-center"></h5>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <h4 class="text-center">Your Match</h4>
+                        <div class="thumbnail">
+                            <div id="userMatchImage" class="img col-centered" style=""></div>
+                            <h5 id="userMatch" class="text-center"></h5>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <!--                                 <h5 id="userMatch"></h5>
+                <img id="userMatchImage" width="250px" src=""> -->
+                <div class="modal-footer text-center">
+                    <button id="all" type="submit" class="btn btn-info"><span class="glyphicon glyphicon-user"></span> View All Replicant Models</button>
+
+                    <button id="reboot" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-refresh"></span> Reboot VK Analyzer</button>
+                    <!--                 <a href="/survey" class="">Fill Again!</a>
+ --></div>
             </div>
         </div>
+    </div>
+    <script type="text/javascript">
+
+    $('#reboot').click(function() {
+        window.location.href = '/survey';
+    });
+
+    $('#all').click(function() {
+        window.location.href = '/all';
+    });
 
 
-<script type="text/javascript">
-$(document).ready(function() {
-    $('select').material_select();
+    $(".submit").on("click", function(event) {
+        event.preventDefault();
 
-    // $('.modal').modal({
-    //     dismissible: false, // Modal can be dismissed by clicking outside of the modal
-    //     opacity: .5, // Opacity of modal background
-    //     inDuration: 300, // Transition in duration
-    //     outDuration: 200, // Transition out duration
-    //     startingTop: '4%', // Starting top style attribute
-    //     endingTop: '10%' // Ending top style attribute
-    // });
-});
+        // Here we grab the form elements
+        var newFriend = {
+            name: $('#name').val().trim(),
+            photo: $('#photo').val().trim(),
+            scores: [
+                $('input:radio[name=calfskin]:checked').val(),
+                $('input:radio[name=butterfly]:checked').val(),
+                $('input:radio[name=tv]:checked').val(),
+                $('input:radio[name=tortise]:checked').val(),
+                $('input:radio[name=mother]:checked').val(),
+                $('input:radio[name=lobster]:checked').val(),
+                $('input:radio[name=nude]:checked').val(),
+                $('input:radio[name=dog]:checked').val(),
+                $('input:radio[name=owl]:checked').val(),
+                $('input:radio[name=sheep]:checked').val()
+            ]
+        };
 
-$(".submit").on("click", function(event) {
-    event.preventDefault();
+        console.log(newFriend);
 
-    // Here we grab the form elements
-    var newFriend = {
-        replicantName: $('#name').val().trim(),
-        replicantPhoto: $('#photo').val().trim(),
-        scores: [
-            $('input:radio[name=calfskin]:checked').val(),
-            $('input:radio[name=butterfly]:checked').val(),
-            $('input:radio[name=tv]:checked').val(),
-            $('input:radio[name=tortise]:checked').val(),
-            $('input:radio[name=mother]:checked').val(),
-            $('input:radio[name=lobster]:checked').val(),
-            $('input:radio[name=nude]:checked').val(),
-            $('input:radio[name=dog]:checked').val(),
-            $('input:radio[name=owl]:checked').val(),
-            $('input:radio[name=sheep]:checked').val()
-        ]
-    };
+        // This line is the magic. It's very similar to the standard ajax function we used.
+        // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+        // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+        // depending on if a tables is available or not.
 
-    console.log(newFriend);
+        // Here we get the location of the root page.
+        // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
+        var currentURL = window.location.origin;
 
-    // This line is the magic. It's very similar to the standard ajax function we used.
-    // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
-    // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
-    // depending on if a tables is available or not.
+        $.post(currentURL + "/api/friends", newFriend,
+            function(data) {
 
-    // Here we get the location of the root page.
-    // We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
-    var currentURL = window.location.origin;
+                // Clear the form when submitting
+                $('#name').val("");
+                $('#photo').val("");
+                $('input[name=calfskin]').attr('checked', false);
+                $('input[name=butterfly]').attr('checked', false);
+                $('input[name=tv]').attr('checked', false);
+                $('input[name=tortise]').attr('checked', false);
+                $('input[name=mother]').attr('checked', false);
+                $('input[name=lobster]').attr('checked', false);
+                $('input[name=nude]').attr('checked', false);
+                $('input[name=dog]').attr('checked', false);
+                $('input[name=owl]').attr('checked', false);
+                $('input[name=sheep]').attr('checked', false);
 
-    $.post(currentURL + "/api/friends", newFriend,
-        function(data) {
+                // Set the name and image values of friend match
+                $('#userMatch').html(data.matchName);
+                $("#userMatchImage").attr("style", "background-image:url('" + data.matchImage + "');");
+                $('#userName').html(data.userName);
+                // $("#userPhoto").attr("src", data.userPhoto);
+                $("#userPhoto").attr("style", "background-image:url('" + data.userPhoto + "');");
 
-            // Clear the form when submitting
-            $('#name').val("");
-            $('#photo').val("");
-            $('input:radio[name=calfskin]').val("");
-            $('#butterfly').val("");
-            $('#tv').val("");
-            $('#tortise').val("");
-            $('#mother').val("");
-            $('#lobster').val("");
-            $('#nude').val("");
-            $('#dog').val("");
-            $('#owl').val("");
-            $('#sheep').val("");
-
-            // Set the name and image values of friend match
-            $('#userMatch').html(data.matchName);
-            $("#userMatchImage").attr("src", data.matchImage);
-
-            // Pop open the modal dialog
-            $('#myModal').modal('show');
+                // Pop open the modal dialog
+                $('#myModal').modal('show');
 
 
-        });
+            });
 
 
 
-});
+    });
 
-</script>
-
+    </script>
 </body>
 
 </html>
